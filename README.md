@@ -9,6 +9,7 @@
 
 **Demo**
 ![Sidemark demo](assets/demo.gif)
+![Sidemark demo 2](assets/demo2.gif)
 
 **Install in Chrome**
 - Open `chrome://extensions/`.
