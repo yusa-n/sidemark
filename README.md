@@ -8,6 +8,7 @@
 - Edit all saved URLs as plain text (one URL per line) with Save/Cancel and inline validation.
 
 **Demo**
+
 ![Sidemark demo](assets/demo.gif)
 
 ![Sidemark demo 2](assets/demo2.gif)
