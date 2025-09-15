@@ -1,0 +1,105 @@
+.sidemark-translate-icon {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: #cacaca;
+    border-radius: 8px 0 0 8px;
+    cursor: grab;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease;
+    user-select: none;
+}
+
+.sidemark-translate-icon.dragging {
+    cursor: grabbing;
+    transition: none;
+}
+
+.sidemark-translate-icon:hover {
+    width: 44px;
+}
+
+.sidemark-emoji {
+    font-size: 16px;
+    line-height: 1;
+    transform: scaleX(-1);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.sidemark-translate-icon:hover .sidemark-emoji {
+    transform: scaleX(-1) scale(1.1);
+}
+
+.sidemark-menu {
+    position: absolute;
+    right: 44px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border-radius: 4px;
+    box-shadow: -2px 2px 8px rgba(81, 81, 81, 0.1);
+    padding: 8px 0;
+    display: none;
+    white-space: nowrap;
+}
+
+.sidemark-translate-icon:hover .sidemark-menu {
+    display: block;
+}
+
+.sidemark-menu-item {
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.sidemark-menu-item:hover {
+    background: #f5f5f5;
+}
+
+.sidemark-menu-item svg {
+    width: 16px;
+    height: 16px;
+    fill: #666;
+}
+
+.sidemark-active {
+    background: #7eb3ff !important;
+}
+
+.sidemark-active:hover {
+    background: #6b9fe8 !important;
+}
+
+.sidemark-menu-item.sidemark-active {
+    color: #7eb3ff;
+    background: #f5f5f5 !important;
+}
+
+.sidemark-menu-item.sidemark-active svg {
+    fill: #7eb3ff;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

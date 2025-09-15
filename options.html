@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sidemark</title>
+        <style>
+            :root {
+                --background: #faf9f5;
+                --foreground: #0a0a0a;
+                --muted: #f3f3f3;
+                --muted-foreground: #7a7a7a;
+                --border: #e5e5e5;
+            }
+
+            * { box-sizing: border-box; }
+
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                color: var(--foreground);
+                background: var(--background);
+                display: flex;
+                min-height: 100vh;
+            }
+
+            .sidebar {
+                width: 200px;
+                background: var(--background);
+                height: 100vh;
+                padding: 16px 0;
+                border-right: 1px dashed var(--muted-foreground);
+                position: fixed;
+            }
+            .sidebar-menu {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .sidebar-menu li {
+                padding: 10px 16px;
+                cursor: pointer;
+                color: var(--foreground);
+            }
+            .sidebar-menu li.active {
+                font-weight: 600;
+            }
+
+            .main-content {
+                margin-left: 200px;
+                padding: 24px;
+                flex: 1;
+                max-width: 900px;
+            }
+
+            .content-section { display: none; }
+            .content-section.active { display: block; }
+
+            h1 {
+                font-size: 24px;
+                margin: 0 0 16px;
+            }
+
+            .url-section { margin-top: 12px; }
+
+            .url-input-group {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+            .url-input {
+                flex: 1;
+                padding: 10px 12px;
+                border: 2px solid var(--border);
+                background: var(--background);
+                color: var(--foreground);
+                font-size: 14px;
+            }
+            .url-input:focus { outline: none; border-color: var(--foreground); }
+
+            .btn, .save-btn {
+                background: transparent;
+                color: var(--foreground);
+                border: 2px solid var(--border);
+                padding: 8px 14px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            .btn:hover, .save-btn:hover { border-color: var(--foreground); }
+
+            .button-group { display: flex; gap: 8px; }
+
+            .status { margin-top: 12px; padding: 10px; border: 1px dashed var(--border); display: none; }
+            .status.success { display: block; color: #155724; background: #eaf7ec; }
+            .status.error { display: block; color: #721c24; background: #fdecea; }
+
+            .url-list {
+                max-height: 500px;
+                overflow-y: auto;
+                border: 1px dashed var(--border);
+                margin-bottom: 12px;
+                background: #fff;
+            }
+            .url-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 12px;
+                border-bottom: 1px dashed var(--border);
+            }
+            .url-item:last-child { border-bottom: none; }
+            .url-item a { color: inherit; text-decoration: none; word-break: break-all; }
+            .url-item a:hover { text-decoration: underline; }
+            .delete-url { color: #b00020; cursor: pointer; padding: 2px 6px; }
+        </style>
+    </head>
+    <body>
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li data-section="url-management" class="active">
+                    Manage URLs
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div id="url-management" class="content-section active">
+                <h1>Saved URLs</h1>
+                <div id="status" class="status"></div>
+                <div class="url-section">
+                    <div class="url-input-group">
+                        <input
+                            type="url"
+                            id="urlInput"
+                            class="url-input"
+                            placeholder="Enter URL to save"
+                        />
+                        <button id="addUrlBtn" class="save-btn">Add URL</button>
+                    </div>
+                    <div id="urlList" class="url-list"></div>
+                    <div class="button-group">
+                        <button id="openAllBtn" class="save-btn open-all-btn">
+                            Open All URLs
+                        </button>
+                        <button id="editUrlsTextBtn" class="save-btn">Edit as Text</button>
+                        <button id="clearAllBtn" class="save-btn clear-all-btn">
+                            Clear All URLs
+                        </button>
+                    </div>
+
+                    <div id="urlTextEditor" style="display:none; margin-top:16px;">
+                        <label for="urlTextArea">Edit URLs as text (one per line)</label>
+                        <textarea id="urlTextArea" style="width:100%; height:200px; font-family: monospace; box-sizing:border-box;"></textarea>
+                        <div class="button-group" style="margin-top:10px;">
+                            <button id="saveUrlsTextBtn" class="save-btn">Save</button>
+                            <button id="cancelUrlsTextBtn" class="save-btn">Cancel</button>
+                        </div>
+                        <div id="urlTextStatus" class="status"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="options.js" defer></script>
+    </body>
+</html>
