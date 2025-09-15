@@ -17,7 +17,6 @@
 - Open `chrome://extensions/`.
 - Turn on `Developer mode` (top-right toggle).
 - Click `Load unpacked` and select this folder (the directory containing `manifest.json`).
-- Optional: Pin the extension from the toolbar puzzle icon.
 
 **Open the Options Page**
 - From `chrome://extensions/` → `Sidemark` → `Details` → `Extension options`.
